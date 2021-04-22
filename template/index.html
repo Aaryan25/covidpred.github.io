@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% load static %}
+{% load humanize %}
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+  <meta name="description" content=""/>
+  <meta name="author" content=""/>
+  <title>Covid-19 India</title>
+  <!-- loader-->
+  <link href= {% static '/css/pace.min.css' %} rel="stylesheet"/>
+  <script src= {% static '/js/pace.min.js' %}></script>
+  <!--favicon-->
+  <link rel="icon" href= {% static '/images/favicon.ico' %} type="image/x-icon">
+  <!-- Vector CSS -->
+  <link href= {% static '/plugins/vectormap/jquery-jvectormap-2.0.2.css' %} rel="stylesheet"/>
+  <!-- simplebar CSS-->
+  <link href= {% static '/plugins/simplebar/css/simplebar.css' %} rel="stylesheet"/>
+  <!-- Bootstrap core CSS-->
+  <link href= {% static '/css/bootstrap.min.css' %} rel="stylesheet"/>
+  <!-- animate CSS-->
+  <link href= {% static '/css/animate.css' %} rel="stylesheet" type="text/css"/>
+  <!-- Icons CSS-->
+  <link href= {% static '/css/icons.css' %} rel="stylesheet" type="text/css"/>
+  <!-- Sidebar CSS-->
+  <link href= {% static '/css/sidebar-menu.css' %} rel="stylesheet"/>
+  <!-- Custom Style-->
+  <link href= {% static '/css/app-style.css' %} rel="stylesheet"/>
+ </head>
+
+<body class="bg-theme bg-theme1">
+ 
+<!-- Start wrapper-->
+ <div id="wrapper">
+ 
+  <!--Start sidebar-wrapper-->
+   <div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
+     <div class="brand-logo">
+      <a href="/Index">
+       <img src={% static '/images/logo-icon.png' %} class="logo-icon" alt="logo icon">
+       <h5 class="logo-text">Dashboard</h5>
+     </a>
+   </div>
+   <ul class="sidebar-menu do-nicescrol">
+      <li class="sidebar-header">MAIN NAVIGATION</li>
+      <li>
+        <a href="/Index">
+          <i class="zmdi zmdi-view-dashboard"></i> <span>Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a href="/Predict">
+          <i class="zmdi zmdi-alert-circle-o "></i> <span>Prediction</span>
+        </a>
+      </li>
+      <li>
+        <a href="/Subscribe">
+          <i class="zmdi zmdi-notifications"></i> <span>Subscribe</span>
+        </a>
+      </li>
+      <li>
+        <a href="/Data">
+          <i class="zmdi zmdi-grid"></i> <span>Data Tables</span>
+        </a>
+      </li>
+      <li>
+        <a href="/Map">
+          <i class="zmdi zmdi-map"></i> <span>Map</span>
+        </a>
+      </li>
+
+    </ul>
+   
+   </div>
+   <!--End sidebar-wrapper-->
+
+<!--Start topbar header-->
+<header class="topbar-nav">
+ <nav class="navbar navbar-expand fixed-top">
+  <ul class="navbar-nav mr-auto align-items-center">
+    <li class="nav-item">
+      <a class="nav-link toggle-menu" href="javascript:void();">
+       <i class="icon-menu menu-icon"></i>
+     </a>
+    </li>   
+  </ul>
+ </nav>
+</header>
+<!--End topbar header-->
+
+<div class="clearfix"></div>	
+  <div class="content-wrapper">
+    <div class="container-fluid">
+
+  <!--Start Dashboard Content-->
+
+	<div class="card mt-3">
+    <div class="card-content">
+        <div class="row row-group m-0">
+            <div class="col-12 col-lg-6 col-xl-3 border-light">
+                <div class="card-body">
+                  <h5 class="text-white mb-0">{{data_india.confirm|intcomma}} <span class="float-right"><i class="fa fa-arrow-up text-danger"></i></span></h5>
+                    <div class="progress my-3" style="height:3px;">
+                       <div class="progress-bar bg-danger" style="width:100%"></div>
+                    </div>
+                  <p class="mb-0 text-white small-font">Total Confirmed </p>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 col-xl-3 border-light">
+                <div class="card-body">
+                  <h5 class="text-white mb-0">{{data_india.active|intcomma}} <span class="float-right"><i class="fa fa-user text-primary"></i></span></h5>
+                    <div class="progress my-3" style="height:3px;">
+                       <div class="progress-bar bg-primary" style="width:100%"></div>
+                    </div>
+                  <p class="mb-0 text-white small-font">Total Active </p>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 col-xl-3 border-light">
+                <div class="card-body">
+                  <h5 class="text-white mb-0">{{data_india.recover|intcomma}} <span class="float-right"><i class="fa fa-arrow-down text-success"></i></span></h5>
+                    <div class="progress my-3" style="height:3px;">
+                       <div class="progress-bar bg-success" style="width:100%"></div>
+                    </div>
+                  <p class="mb-0 text-white small-font">Total Recovered </p>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 col-xl-3 border-light">
+                <div class="card-body">
+                  <h5 class="text-white mb-0">{{data_india.death|intcomma}} <span class="float-right"><i class="fa fa-ban text-dark"></i></span></h5>
+                    <div class="progress my-3" style="height:3px;">
+                       <div class="progress-bar bg-dark" style="width:100%"></div>
+                    </div>
+                  <p class="mb-0 text-white small-font">Total Deaths </p>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>  
+	  
+	<div class="row">
+     <div class="col-12 col-lg-12 col-xl-12">
+	    <div class="card">
+		    <div class="card-header">Daily Data India</div>
+		    <div class="card-body">
+		      <ul class="list-inline">
+			      <li class="list-inline-item"><i class="fa fa-circle mr-2 text-white"></i>Confirmed</li>
+			      <li class="list-inline-item"><i class="fa fa-circle mr-2 text-light"></i>Recovered</li>
+			      <li class="list-inline-item"><i class="fa fa-circle mr-2 text-dark"></i>Deaths</li>
+			    </ul>
+			    <div class="chart-container-1">
+			      <canvas id="chart1"></canvas>
+			    </div>
+		    </div>
+		   </div>
+		 </div>
+		</div>
+	
+	<div class="row">
+	 <div class="col-12 col-lg-12">
+	   <div class="card">
+	     <div class="card-header">State Data Tables</div>
+	       <div class="table-responsive">
+            <table class="table align-items-center table-flush table-borderless">
+              <thead>
+                <tr>
+                  <th>State Name</th>
+                  <th class="text-center">Confirmed</th>
+                  <th class="text-center">Active</th>
+                  <th class="text-center">Recovered</th>
+                  <th class="text-center">Deaths</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for rowval in state_table %}
+                <tr>
+                  <td>{{rowval.1}}</td>
+                  <td class="text-center">{{rowval.2|intcomma}}</td>
+                  <td class="text-center">{{rowval.3|intcomma}}</td>
+                  <td class="text-center">{{rowval.4|intcomma}}</td>
+                  <td class="text-center">{{rowval.5|intcomma}}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+	      </div>
+	    </div>
+	  </div><!--End Row-->
+
+      <!--End Dashboard Content-->
+	  
+	<!--start overlay-->
+		  <div class="overlay toggle-menu"></div>
+		<!--end overlay-->
+		
+    </div>
+    <!-- End container-fluid-->
+    
+    </div><!--End content-wrapper-->
+		
+  <!--start color switcher-->
+   <div class="right-sidebar">
+    <div class="switcher-icon">
+      <i class="zmdi zmdi-settings zmdi-hc-spin"></i>
+    </div>
+    <div class="right-sidebar-content">
+
+      <p class="mb-0">Gaussion Texture</p>
+      <hr>
+      
+      <ul class="switcher">
+        <li id="theme1"></li>
+        <li id="theme2"></li>
+        <li id="theme3"></li>
+        <li id="theme4"></li>
+        <li id="theme5"></li>
+        <li id="theme6"></li>
+      </ul>
+
+      <p class="mb-0">Gradient Background</p>
+      <hr>
+      
+      <ul class="switcher">
+        <li id="theme7"></li>
+        <li id="theme8"></li>
+        <li id="theme9"></li>
+        <li id="theme10"></li>
+        <li id="theme11"></li>
+        <li id="theme12"></li>
+		<li id="theme13"></li>
+        <li id="theme14"></li>
+        <li id="theme15"></li>
+      </ul>
+      
+     </div>
+   </div>
+  <!--end color switcher-->
+   
+  </div><!--End wrapper-->
+
+
+{{ data_india_active.date | json_script:"data_india_active_date" }}
+{{ data_india_active.active | json_script:"data_india_active_data" }}
+{{ data_india_recovered.recovered | json_script:"data_india_recover_data" }}
+{{ data_india_deaths.death | json_script:"data_india_death_data" }}
+  <!-- Bootstrap core JavaScript-->
+  <script src= {% static '/js/jquery.min.js' %}></script>
+  <script src= {% static '/js/popper.min.js' %}></script>
+  <script src= {% static '/js/bootstrap.min.js' %}></script>
+	
+ <!-- simplebar js -->
+  <script src= {% static '/plugins/simplebar/js/simplebar.js' %}></script>
+  <!-- sidebar-menu js -->
+  <script src= {% static '/js/sidebar-menu.js' %}></script>
+  <!-- loader scripts -->
+  <script src= {% static '/js/jquery.loading-indicator.js' %}></script>
+  <!-- Custom scripts -->
+  <script src= {% static '/js/app-script.js' %}></script>
+  <!-- Chart js -->
+  
+  <script src= {% static '/plugins/Chart.js/Chart.min.js' %}></script>
+ 
+  <!-- Index js -->
+  <script src= {% static '/js/index.js' %} ></script>
+  
+
+</body>
+</html>
